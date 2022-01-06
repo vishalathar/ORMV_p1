@@ -54,12 +54,7 @@ public class Configuration {
 	public Connection getConnection() {
 		
 		Connection conn = null;
-		//ConnectionUtil jdbcObj = null;
 		DataSource dataSource = null;
-		
-		
-		
-		
 		try {
 			dataSource = ConnectionUtil.setUpPool();
 		
