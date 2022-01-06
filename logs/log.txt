@@ -1,0 +1,4 @@
+2022-01-06 01:09:40 INFO  ormv.util.ConnectionUtil:53 - Database Connection Established
+2022-01-06 01:11:05 INFO  ormv.util.ConnectionUtil:57 - Database Connection Established
+2022-01-06 01:52:14 WARN  ormv.util.ConnectionUtil:79 - java.lang.NullPointerException: Cannot invoke "com.ormv.util.ConnectionUtil.printDbStatus()" because "jdbcObj" is null
+2022-01-06 01:53:02 WARN  ormv.util.ConnectionUtil:79 - java.lang.NullPointerException: Cannot invoke "com.ormv.util.ConnectionUtil.printDbStatus()" because "jdbcObj" is null

@@ -1,12 +1,15 @@
 package com.ormv.util;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.apache.log4j.Logger;
 import com.ormv.util.Configuration;
-import com.ormv.util.MetaModel;
 
 /**
  * The purpose of this class is to have the User only provide a few
@@ -17,9 +20,8 @@ import com.ormv.util.MetaModel;
  */
 public class Configuration {
 	
-	private String dbUrl;
-	private String dbUsername;
-	private String dbPassword;
+	private static Logger logger = Logger.getLogger(ConnectionUtil.class);
+
 	// this is the list of classes that the user wants our ORM to "scan" aka introspect and build 
 	// as DB objects
 	private List<MetaModel<Class<?>>> metaModelList;
@@ -49,22 +51,34 @@ public class Configuration {
 	}
 	
 	// return a Connection object OR call on a separate class like Connection Util
-	public Connection getConnection(String dbUrl, String dbUsername, String dbPassword) {
+	public Connection getConnection() {
+		
+		Connection conn = null;
+		//ConnectionUtil jdbcObj = null;
+		DataSource dataSource = null;
 		
 		
-		this.dbUrl = dbUrl;
-		this.dbUsername = dbUsername;
-		this.dbPassword = dbPassword;
 		
-		// maybe call the connection here...up to you!
-
-		// you can access the above DB credentials which are instance variables of the
-		// configuration object.
-		// this is up to your creativity
 		
-		// connect to DB
-		return null; // right now I'm just returning null because I don't have that logic ready now
+		try {
+			dataSource = ConnectionUtil.setUpPool();
 		
+			ConnectionUtil.printDbStatus();
+		
+		// Performing a Database Operation!
+			conn = dataSource.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			//se.printStackTrace();
+			logger.warn(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			logger.warn(e);
+		}
+		ConnectionUtil.printDbStatus();
+		
+		return conn; 
 	}
 
 }

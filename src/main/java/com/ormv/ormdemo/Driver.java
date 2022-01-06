@@ -20,7 +20,7 @@ public class Driver {
 		cfg.addAnnotatedClass(DemoUser.class);
 		//cfg.addAnnotatedClass(DemoOtherClass.class);
 		
-		cfg.getConnection("url", "username", "password");
+		cfg.getConnection();
 		
 		for (MetaModel<?> metamodel : cfg.getMetaModels()) {
 			
@@ -42,6 +42,10 @@ public class Driver {
 						foreignKey.getName(), foreignKey.getType(), foreignKey.getColumnName());
 			}		
 		}
+		
+		
+		
+		
 	}
 
 }
