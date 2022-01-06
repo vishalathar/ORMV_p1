@@ -10,13 +10,11 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-	</properties>
-	
-	<!-- Sonar Cloud Properties -->
-	<properties>
- 		<sonar.organization>vishalathar</sonar.organization>
+		<!-- Sonar Cloud Properties -->
+		<sonar.organization>vishalathar</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
+	
 	
 	<dependencies>
 		<!-- PostgreSQL -->

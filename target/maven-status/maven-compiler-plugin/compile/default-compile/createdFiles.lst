@@ -11,3 +11,4 @@ com\ormv\annotations\Id.class
 com\ormv\annotations\Entity.class
 com\ormv\annotations\JoinColumn.class
 com\ormv\util\Configuration.class
+com\ormv\util\ConnectionUtil.class
