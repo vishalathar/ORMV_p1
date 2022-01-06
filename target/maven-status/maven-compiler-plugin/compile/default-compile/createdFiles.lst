@@ -1,0 +1,13 @@
+com\ormv\util\ColumnField.class
+com\ormv\demomodels\DemoOtherClass.class
+com\ormv\ormdemo\Driver.class
+com\ormv\inspection\ClassInspector.class
+com\ormv\util\MetaModel.class
+com\ormv\demomodels\DemoUser.class
+com\ormv\annotations\Column.class
+com\ormv\util\ForeignKeyField.class
+com\ormv\util\PrimaryKeyField.class
+com\ormv\annotations\Id.class
+com\ormv\annotations\Entity.class
+com\ormv\annotations\JoinColumn.class
+com\ormv\util\Configuration.class
