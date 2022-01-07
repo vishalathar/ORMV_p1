@@ -14,5 +14,6 @@ public @interface JoinColumn {
 	boolean unique() default false;
 	boolean nullable() default true;
 	// TODO: CASCADE TYPE in future versions
+	// on delete and on update cascade for now
 
 }

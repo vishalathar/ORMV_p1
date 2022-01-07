@@ -27,6 +27,7 @@ private Field field; // from java.lang.reflect
 		return field.getType();
 	}
 	
+	
 	public String getColumnName() {
 		return field.getAnnotation(JoinColumn.class).columnName();
 	}

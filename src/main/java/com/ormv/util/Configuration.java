@@ -106,13 +106,9 @@ public class Configuration {
 	}
 	
 	public void showReflectionMagic() {
-		//TODO: for each metamodel send it into createtablequery
-		//TODO: for each metamodel send it into createTableJDBC
 		
-		for (MetaModel<?> metamodel : metaModelList){
-			String query = edao.createTableQuery(metamodel);
-			edao.createTableJDBC(query);
-		}
+			edao.createTableQuery(metaModelList);
+
 		
 	}
 

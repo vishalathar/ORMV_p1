@@ -17,14 +17,12 @@ public class Driver {
 
 		Configuration cfg = new Configuration();
 		
-		cfg.addAnnotatedClass(DemoUser.class);
 		cfg.addAnnotatedClass(DemoOtherClass.class);
 		
-		cfg.getConnection();
+		cfg.addAnnotatedClass(DemoUser.class);
 		
-		
-		cfg.printMetaModels();
 		cfg.showReflectionMagic();
+		
 		
 		
 	}
