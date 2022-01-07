@@ -9,4 +9,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Id {
 	String columnName();
+	String check() default "none";
+	boolean unique() default true;
+	boolean nullable() default false;
+	String strategy() default "";
 }

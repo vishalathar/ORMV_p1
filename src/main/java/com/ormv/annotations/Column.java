@@ -10,5 +10,8 @@ import java.lang.annotation.Target;
 public @interface Column {
 	
 	String columnName();
+	String check() default "none";
+	boolean unique() default false;
+	boolean nullable() default true;
 
 }

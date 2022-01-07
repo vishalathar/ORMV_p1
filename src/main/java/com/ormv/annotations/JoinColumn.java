@@ -10,5 +10,9 @@ import java.lang.annotation.Target;
 public @interface JoinColumn {
 	
 	String columnName();
+	String check() default "none";
+	boolean unique() default false;
+	boolean nullable() default true;
+	// TODO: CASCADE TYPE in future versions
 
 }
