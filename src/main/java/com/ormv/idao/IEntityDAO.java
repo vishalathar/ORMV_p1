@@ -33,7 +33,7 @@ public interface IEntityDAO {
 	public void delete(Object Obj);
 	
 	// delete all records
-	public void deleteAll(Class<?> clazz);
+	public void truncate(Class<?> clazz);
 	
 	
 	

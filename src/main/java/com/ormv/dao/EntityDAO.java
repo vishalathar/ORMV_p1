@@ -331,7 +331,7 @@ public class EntityDAO<T> implements IEntityDAO {
 	}
 
 	@Override
-	public void deleteAll(Class<?> clazz) {
+	public void truncate(Class<?> clazz) {
 		// TODO Auto-generated method stub
 		
 		// getting name of table
