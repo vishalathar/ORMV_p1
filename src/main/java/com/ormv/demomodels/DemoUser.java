@@ -28,6 +28,19 @@ public class DemoUser {
 	public DemoUser() {
 		super();
 	}
+	
+	public DemoUser(int id, String firstName, String lastname) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastname = lastname;
+	}
+	
+	public DemoUser(String firstName, String lastname) {
+		super();
+		this.firstName = firstName;
+		this.lastname = lastname;
+	}
 
 	@Override
 	public String toString() {
@@ -51,12 +64,7 @@ public class DemoUser {
 		return Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(lastname, other.lastname);
 	}
 
-	public DemoUser(int id, String firstName, String lastname) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastname = lastname;
-	}
+	
 
 	public int getId() {
 		return id;

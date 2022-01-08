@@ -2,15 +2,13 @@ package com.ormv.ormdemo;
 
 import java.util.List;
 
+import com.ormv.dao.EntityDAO;
 import com.ormv.demomodels.DemoOtherClass;
 import com.ormv.demomodels.DemoUser;
 import com.ormv.util.Configuration;
-import com.ormv.util.ColumnField;
-import com.ormv.util.ForeignKeyField;
-import com.ormv.util.MetaModel;
-import com.ormv.util.PrimaryKeyField;
-
 public class Driver {
+	
+	private static EntityDAO edao = new EntityDAO<>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -23,6 +21,12 @@ public class Driver {
 		
 		cfg.showReflectionMagic();
 		
+		DemoUser du1 = new DemoUser("Vishal", "Athar");
+		DemoUser du2 = new DemoUser("Fozia", "Chughtai");
+		
+		//edao.save(du1);
+		
+		edao.delete(du1);
 		
 		
 	}

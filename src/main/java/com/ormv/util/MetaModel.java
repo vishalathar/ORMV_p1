@@ -140,6 +140,10 @@ public class MetaModel<T> { // we're inferring that the MetaModel class can only
 	public String getClassName() {
 		return clazz.getName();
 	}
+	
+	public Class<?> getClazz(){
+		return this.clazz;
+	}
 
 	public PrimaryKeyField getPrimaryKeyField() {
 		return primaryKeyField;
