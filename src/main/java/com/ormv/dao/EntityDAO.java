@@ -1,7 +1,9 @@
 package com.ormv.dao;
 
 import java.lang.ProcessBuilder.Redirect.Type;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -237,6 +239,16 @@ public class EntityDAO<T> implements IEntityDAO {
 			}
 		}
 		
+		
+//		for (Annotation annotation : c.class.getAnnotations()) {
+//            Class<? extends Annotation> type = annotation.annotationType();
+//            System.out.println("Values of " + type.getName());
+//
+//            for (Method method : type.getDeclaredMethods()) {
+//                Object value = method.invoke(annotation, (Object[])null);
+//                System.out.println(" " + method.getName() + ": " + value);
+//            }
+//        }
 		
 		
 		StringBuilder sb = new StringBuilder();

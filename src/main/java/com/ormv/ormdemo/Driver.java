@@ -26,7 +26,7 @@ public class Driver {
 		
 		//edao.save(du1);
 		
-		edao.delete(du1);
+		//edao.delete(du1);
 		
 		
 	}

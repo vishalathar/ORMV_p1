@@ -82,6 +82,18 @@ public class MetaModel<T> { // we're inferring that the MetaModel class can only
 		
 		return columnFields;
 	}
+	/*
+	Field[] fields = Test.class.getDeclaredFields();       
+	for (Field field : fields) {       
+		if(field.isAnnotationPresent(FieldDescr.class))
+		{       
+			MyAnnotation myAnnotation = field.getAnnotation(MyAnnotation.class);       
+			System.out.println(myAnnoatation.name());       
+		}       
+	}
+	
+	*/
+	
 	
 	// As of right now I have a way to extract the primary key of a MetaModel object
 	public PrimaryKeyField setPrimaryKey() {

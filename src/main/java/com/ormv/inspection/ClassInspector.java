@@ -46,7 +46,7 @@ public class ClassInspector {
 
 	}
 	
-	public static void listPublicMethods(Class<?> clazz) {
+	public static Method[] listPublicMethods(Class<?> clazz) {
 		System.out.println("Printing public methods of " + clazz.getName());
 		Method[] methods = clazz.getMethods();
 		
@@ -69,5 +69,7 @@ public class ClassInspector {
 			}
 		}
 		System.out.println();
+		
+		return methods;
 	}
 }
