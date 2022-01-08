@@ -52,7 +52,7 @@ public class Session<T extends InterfaceSession> {
 	public Object runGetter(Field field)
 	{
 	    // MZ: Find the correct method
-		Method[] methods = ClassInspector.listPublicMethods(this.annotatedClass);
+		Method[] methods = ClassInspector.listDeclaredMethods(this.annotatedClass);
 		
 	    for (Method method : methods)
 	    {

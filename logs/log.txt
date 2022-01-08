@@ -16,3 +16,8 @@
   Position: 70
 2022-01-07 10:43:36 WARN  ormv.util.ConnectionUtil:36 - org.postgresql.util.PSQLException: ERROR: column "test_id" referenced in foreign key constraint does not exist
 2022-01-07 10:45:36 WARN  ormv.util.ConnectionUtil:36 - org.postgresql.util.PSQLException: ERROR: column "test_id" referenced in foreign key constraint does not exist
+2022-01-08 12:51:03 WARN  ormv.util.ConnectionUtil:93 - org.postgresql.util.PSQLException: ERROR: syntax error at end of input
+  Position: 36
+2022-01-08 12:54:56 WARN  ormv.util.ConnectionUtil:97 - org.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
+2022-01-08 12:59:33 WARN  ormv.util.ConnectionUtil:97 - org.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
+2022-01-08 13:00:59 WARN  ormv.util.ConnectionUtil:97 - org.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.

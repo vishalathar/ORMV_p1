@@ -8,7 +8,7 @@ import com.ormv.demomodels.DemoUser;
 import com.ormv.util.Configuration;
 public class Driver {
 	
-	private static EntityDAO edao = new EntityDAO<>();
+	private static EntityDAO edao = null;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -22,11 +22,13 @@ public class Driver {
 		cfg.showReflectionMagic();
 		
 		DemoUser du1 = new DemoUser("Vishal", "Athar");
-		DemoUser du2 = new DemoUser("Fozia", "Chughtai");
+		DemoUser du2 = new DemoUser(1, "Fozia", "Chughtai");
+		
+		edao = new EntityDAO<>(cfg);
 		
 		//edao.save(du1);
 		
-		//edao.delete(du1);
+		edao.delete(du2);
 		
 		
 	}

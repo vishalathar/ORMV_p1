@@ -17,19 +17,20 @@ import com.ormv.dao.EntityDAO;
  * things in order for the ORM to establish a connection and build the tables
  * based on a list of User-Defined classes that the user passes to the ORM to
  * iuntrospect and construct in the DB 
+ * @param <T>
  *
  */
-public class Configuration {
+public class Configuration<T> {
 	
 	private static Logger logger = Logger.getLogger(ConnectionUtil.class);
-	private EntityDAO edao = new EntityDAO<Object>();
+	private EntityDAO<T> edao = new EntityDAO<>(this);
 
 	// this is the list of classes that the user wants our ORM to "scan" aka introspect and build 
 	// as DB objects
 	private List<MetaModel<Class<?>>> metaModelList;
 	
 	// This method doesn't technically follow SRP Single Responsibility Principle
-	public Configuration addAnnotatedClass(Class<?> annotatedClass) {
+	public Configuration<T> addAnnotatedClass(Class<?> annotatedClass) {
 
 		
 		// first check if a linked List has been instantiated...

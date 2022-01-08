@@ -1,21 +1,18 @@
 package com.ormv.dao;
 
-import java.lang.ProcessBuilder.Redirect.Type;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-
-import javax.swing.text.html.HTMLDocument.HTMLReader.HiddenAction;
 
 import org.apache.log4j.Logger;
 
 import com.ormv.annotations.Entity;
 import com.ormv.annotations.Id;
 import com.ormv.idao.IEntityDAO;
+import com.ormv.inspection.ClassInspector;
 import com.ormv.util.ColumnField;
 import com.ormv.util.Configuration;
 import com.ormv.util.ConnectionUtil;
@@ -25,6 +22,21 @@ import com.ormv.util.PrimaryKeyField;
 
 public class EntityDAO<T> implements IEntityDAO {
 	private static Logger logger = Logger.getLogger(ConnectionUtil.class);
+	private List<MetaModel<Class<?>>> metaModels;
+	private ClassInspector CI;
+
+	public EntityDAO(Configuration cfg) {
+		super();
+		this.metaModels = cfg.getMetaModels();
+		CI = new ClassInspector();
+	}
+
+//	public EntityDAO(List<MetaModel<Class<?>>> metaModels, ClassInspector cI) {
+//		super();
+//		this.metaModels = metaModels;
+//		CI = cI;
+//	}
+//	
 
 	@Override
 	public void createTableJDBC(String query) {
@@ -64,23 +76,26 @@ public class EntityDAO<T> implements IEntityDAO {
 	}
 
 	@Override
-	public void INSERT_INTO_JDBC(String query) {
+	public void DELETE_FROM_JDBC_BY_ID(String query, Object id) {
 
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
 			connection = Configuration.getConnection();
-			statement = connection.createStatement();
-			statement.execute(query);
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setObject(1, id);
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			// e.printStackTrace();
 			logger.warn(e);
 		} finally {
-			if (statement != null) {
+			if (preparedStatement != null) {
 				try {
-					statement.close();
+					preparedStatement.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					// e.printStackTrace();
@@ -99,6 +114,48 @@ public class EntityDAO<T> implements IEntityDAO {
 		}
 
 	}
+	
+	@Override
+	public void DELETE_ALL_JDBC_BY_CLASS(String query) {
+		// TODO Auto-generated method stub
+		
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = Configuration.getConnection();
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			logger.warn(e);
+		} finally {
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					// e.printStackTrace();
+					logger.warn(e);
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					// e.printStackTrace();
+					logger.warn(e);
+				}
+			}
+		}
+		
+	}
+
 
 	/*
 	 * 
@@ -220,43 +277,45 @@ public class EntityDAO<T> implements IEntityDAO {
 	@Override
 	public void delete(Object Obj) {
 		// TODO Auto-generated method stub
-		
+
 		// getting name of table
 		Class<?> clazz = Obj.getClass();
 		System.out.println("Class Name : " + clazz.getSimpleName());
 		PrimaryKeyField pkf = null;
 		Entity entity = clazz.getAnnotation(Entity.class);
-		
-		Class<?> c = (Class<?>) safeCastTo(Obj, clazz);
-		
+
+		// Class<?> c = (Class<?>) safeCastTo(Obj, clazz);
+
 		// getting name of primary key
 		Field[] fields = clazz.getDeclaredFields();
-		for(Field f : fields) {
+		Object fieldValue = null;
+		for (Field f : fields) {
 			Id id = f.getAnnotation(Id.class);
-			
-			if(id!=null) {
-				pkf = new PrimaryKeyField(f);	
+
+			if (id != null) {
+				pkf = new PrimaryKeyField(f);
+
+				// get the primary key field value
+				f.setAccessible(true);
+				try {
+					System.out.println("value:  " + f.get(Obj));
+					fieldValue = f.get(Obj);
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// fieldValue = CI.getFieldValue(f, clazz);
+
 			}
 		}
-		
-		
-//		for (Annotation annotation : c.class.getAnnotations()) {
-//            Class<? extends Annotation> type = annotation.annotationType();
-//            System.out.println("Values of " + type.getName());
-//
-//            for (Method method : type.getDeclaredMethods()) {
-//                Object value = method.invoke(annotation, (Object[])null);
-//                System.out.println(" " + method.getName() + ": " + value);
-//            }
-//        }
-		
-		
 		StringBuilder sb = new StringBuilder();
 		sb.append("DELETE FROM " + entity.tableName().toLowerCase() + " WHERE " + pkf.getColumnName() + " = ?;");
 		System.out.println(sb);
-		
-		//INSERT_INTO_JDBC(sb, int)	;
-		
+
+		DELETE_FROM_JDBC_BY_ID(sb.toString(), fieldValue);
 	}
 
 	@Override
@@ -274,6 +333,19 @@ public class EntityDAO<T> implements IEntityDAO {
 	@Override
 	public void deleteAll(Class<?> clazz) {
 		// TODO Auto-generated method stub
+		
+		// getting name of table
+				//Class<?> clazz = Obj.getClass();
+				System.out.println("Class Name : " + clazz.getSimpleName());
+				PrimaryKeyField pkf = null;
+				Entity entity = clazz.getAnnotation(Entity.class);
+
+				
+				StringBuilder sb = new StringBuilder();
+				sb.append("TRUNCATE " + entity.tableName().toLowerCase() + " ;");
+				System.out.println(sb);
+
+				DELETE_ALL_JDBC_BY_CLASS(sb.toString());
 
 	}
 
@@ -299,4 +371,5 @@ public class EntityDAO<T> implements IEntityDAO {
 		return null;
 	}
 
+	
 }

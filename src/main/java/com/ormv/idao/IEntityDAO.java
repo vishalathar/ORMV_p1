@@ -10,7 +10,9 @@ public interface IEntityDAO {
 	
 	public <T> void createTableQuery(List<MetaModel<T>> models);
 	
-	public void INSERT_INTO_JDBC(String query);
+	public void DELETE_FROM_JDBC_BY_ID(String query, Object id);
+	
+	public void DELETE_ALL_JDBC_BY_CLASS(String query);
 	
 	// *** PERSISTENCE Methods ***
 	// saves the object in db 
