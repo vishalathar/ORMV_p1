@@ -105,6 +105,25 @@ Finally, inside your project structure you need a ormv.cfg.proprties file.
   - ### '```public Object get(Class<?> clazz, Object id)```'
       - Returns the Object in the respective table in DB represented by id.
 
+## CustomExceptions:
+  - ```ClassNotAnnotatedWithEntity```
+  This exception gets handled when a class is not annotated with entity.
+  - ```ColumnFieldNotAnnotatedWithColumn```
+  This exception gets handled when a class field is not annotated with column.
+  - ```ColumnFieldNotAnnotatedWithId```
+  This exception gets handled when a class field is not annotated with id.
+  - ```ColumnFieldNotAnnotatedWithJoinColumn```
+  This exception gets handled when a column field is not annotated with join column.
+  - ```CustomException```
+  This exception gets handled when custom exception is thrown.
+  - ```NoColumnsInClass```
+  This exception gets handled when a class has no columns.
+  - ```NoForeignKeys```
+  This exception gets handled when a class has no foreign keys.  
+  - ```NoIdInClass```
+   This exception gets handled when a class has no primary key.
+
+
 
 ## License
 
