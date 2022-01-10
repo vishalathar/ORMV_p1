@@ -55,13 +55,15 @@ Finally, inside your project structure you need a ormv.cfg.proprties file.
 ## Usage  
   ### Annotating classes  
   All classes which represent objects in database must be annotated.
-   - #### @Table(name = "table_name")  
+   - #### @Table(tableName = "table_name")  
       - Indicates that this class is associated with table 'table_name'  
-   - #### @Column(name = "column_name")  
+   - #### @Column(columnName = "column_name")  
       - Indicates that the Annotated field is a column in the table with the name 'column_name'
-   - #### @PrimaryKey(name = "column_name") 
+   - #### @PrimaryKey(columnName = "column_name", strategy="GenerationType.IDENTITY") 
       - Indicates that the annotated field is the primary key for the table.
-   - #### @JoinColumn(name = "column_name") 
+      - Strategy indicates that it is a SERIAL TYPE primary key
+      - Currently only SERIAL TYPE is supported
+   - #### @JoinColumn(columnName = "column_name") 
       - Indicates that the annotated field is the foreign key for the table
 
   ### User API  
