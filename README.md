@@ -59,12 +59,20 @@ Finally, inside your project structure you need a ormv.cfg.proprties file.
       - Indicates that this class is associated with table 'table_name'  
    - #### @Column(columnName = "column_name")  
       - Indicates that the Annotated field is a column in the table with the name 'column_name'
+      - CHECK
+      - UNIQUE
+      - NULLABLE
    - #### @PrimaryKey(columnName = "column_name", strategy="GenerationType.IDENTITY") 
       - Indicates that the annotated field is the primary key for the table.
-      - Strategy indicates that it is a SERIAL TYPE primary key
-      - Currently only SERIAL TYPE is supported
+      - Strategy indicates that it is a SERIAL TYPE primary key (currently only SERIAL TYPE is supported).
+      -  CHECK
+      - UNIQUE
+      - NULLABLE
    - #### @JoinColumn(columnName = "column_name") 
       - Indicates that the annotated field is the foreign key for the table
+      - CHECK
+      - UNIQUE
+      - NULLABLE
 
   ### User API  
   - To work with the API you need to make an instance of Configuration() as
