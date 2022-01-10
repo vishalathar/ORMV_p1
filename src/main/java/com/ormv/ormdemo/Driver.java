@@ -22,14 +22,21 @@ public class Driver {
 		cfg.showReflectionMagic();
 		
 		DemoUser du1 = new DemoUser("Vishal", "Athar");
-		DemoUser du2 = new DemoUser(1, "Fozia", "Chughtai");
+		DemoUser du2 = new DemoUser("Fozia", "Chughtai");
 		
 		edao = new EntityDAO<>(cfg);
 		
-		//edao.save(du1);
+		// functions need to get to work
 		
-		//edao.delete(du2);
-		edao.truncate(DemoUser.class);
+		du1.setId((int)edao.save(du1));
+		edao.save(du2);
+		
+		DemoUser du1Copy = (DemoUser)edao.get(DemoUser.class, du1.getId());
+		System.out.println(du1Copy);
+		//System.out.println(du1);
+		// functions working
+		//edao.delete(du1);
+		//edao.truncate(DemoUser.class);
 		
 		
 	}

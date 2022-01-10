@@ -44,4 +44,29 @@ private Field field; // from java.lang.reflect
 		return field.getAnnotation(JoinColumn.class).nullable();
 	}
 
+
+	public Object getValue(Object obj) {
+		try {
+			setAccessible(true);
+			return field.get(obj);
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void setValue(Object obj, Object fieldVal) {
+		try {
+			setAccessible(true);
+			field.set(obj, fieldVal);
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void setAccessible(boolean b) {
+		field.setAccessible(b);
+	}
 }

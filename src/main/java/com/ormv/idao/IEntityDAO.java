@@ -14,10 +14,17 @@ public interface IEntityDAO {
 	
 	public void DELETE_ALL_JDBC_BY_CLASS(String query);
 	
+	public Object GET_AN_OBJECT_BY_ID(String query, Object Obj);
+	
+	public Object INSERT_INTO_AN_OBJECT_JDBC(String query, Object Obj);
+	
+	public void UPDATE_AN_OBJECT_BY_OBJECT_JDBC(String query, Object Obj);
+	
+	
 	// *** PERSISTENCE Methods ***
 	// saves the object in db 
 	// return pk
-	public int save(Object Obj);
+	public Object save(Object Obj);
 	
 	// saves the object in db if not present, if present update it
 	// returns pk
@@ -41,7 +48,7 @@ public interface IEntityDAO {
 	// *** READING Methods ***
 	
 	// return the object by pk
-	public Object get(Class<?> clazz, int id);
+	public Object get(Class<?> clazz, Object id);
 	
 	// return list
 	public List<Class<?>> getAll(Class<?> clazz);

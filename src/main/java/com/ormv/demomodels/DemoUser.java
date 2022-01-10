@@ -13,7 +13,7 @@ import com.ormv.annotations.JoinColumn;
 @Entity(tableName="users")
 public class DemoUser {
 	
-	@Id(columnName="user_id") // primary key
+	@Id(columnName="user_id", strategy="GenerationType.IDENTITY") // primary key
 	private int id;
 	
 	@Column(columnName="first_name")
@@ -27,6 +27,11 @@ public class DemoUser {
 	
 	public DemoUser() {
 		super();
+	}
+	
+	public DemoUser(Object id) {
+		super();
+		this.id = (int) id;
 	}
 	
 	public DemoUser(int id, String firstName, String lastname) {

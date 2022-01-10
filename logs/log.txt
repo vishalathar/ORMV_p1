@@ -21,3 +21,18 @@
 2022-01-08 12:54:56 WARN  ormv.util.ConnectionUtil:97 - org.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
 2022-01-08 12:59:33 WARN  ormv.util.ConnectionUtil:97 - org.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
 2022-01-08 13:00:59 WARN  ormv.util.ConnectionUtil:97 - org.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
+2022-01-10 05:21:13 WARN  ormv.util.ConnectionUtil:572 - org.postgresql.util.PSQLException: No value specified for parameter 1.
+2022-01-10 05:23:31 WARN  ormv.util.ConnectionUtil:573 - org.postgresql.util.PSQLException: No value specified for parameter 1.
+2022-01-10 05:25:05 WARN  ormv.util.ConnectionUtil:574 - org.postgresql.util.PSQLException: No value specified for parameter 1.
+2022-01-10 05:25:53 WARN  ormv.util.ConnectionUtil:574 - org.postgresql.util.PSQLException: No value specified for parameter 1.
+2022-01-10 05:34:32 WARN  ormv.util.ConnectionUtil:574 - org.postgresql.util.PSQLException: ERROR: null value in column "user_id" of relation "users" violates not-null constraint
+  Detail: Failing row contains (null, Vishal, Athar, null).
+2022-01-10 05:38:37 WARN  ormv.util.ConnectionUtil:574 - org.postgresql.util.PSQLException: The column index is out of range: 3, number of columns: 2.
+2022-01-10 05:42:08 WARN  ormv.util.ConnectionUtil:574 - org.postgresql.util.PSQLException: The column index is out of range: 3, number of columns: 2.
+2022-01-10 05:42:51 WARN  ormv.util.ConnectionUtil:574 - org.postgresql.util.PSQLException: The column index is out of range: 3, number of columns: 2.
+2022-01-10 05:45:10 WARN  ormv.util.ConnectionUtil:574 - org.postgresql.util.PSQLException: ERROR: null value in column "user_id" of relation "users" violates not-null constraint
+  Detail: Failing row contains (null, Vishal, Athar, null).
+2022-01-10 05:58:41 WARN  ormv.util.ConnectionUtil:98 - org.postgresql.util.PSQLException: Can't infer the SQL type to use for an instance of com.ormv.demomodels.DemoUser. Use setObject() with an explicit Types value to specify the type to use.
+2022-01-10 06:00:42 WARN  ormv.util.ConnectionUtil:119 - org.postgresql.util.PSQLException: ERROR: operator does not exist: integer = character varying
+  Hint: No operator matches the given name and argument types. You might need to add explicit type casts.
+  Position: 33

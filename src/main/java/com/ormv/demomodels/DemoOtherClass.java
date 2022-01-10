@@ -9,7 +9,7 @@ import com.ormv.annotations.Id;
 @Entity(tableName="test_table") 
 public class DemoOtherClass {
 	
-	@Id(columnName="test_id")
+	@Id(columnName="test_id", strategy="GenerationType.IDENTITY")
 	private int testId;
 	
 	@Column(columnName="test_field_1")
