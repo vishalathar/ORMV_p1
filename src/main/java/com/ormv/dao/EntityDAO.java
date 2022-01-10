@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.ormv.annotations.Entity;
 import com.ormv.annotations.Id;
+import com.ormv.customexceptions.CustomException;
 import com.ormv.idao.IEntityDAO;
 import com.ormv.inspection.ClassInspector;
 import com.ormv.util.ColumnField;
@@ -43,7 +44,6 @@ public class EntityDAO<T> implements IEntityDAO {
 			statement.execute(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
 			logger.warn(e);
 		} finally {
 			if (statement != null) {
@@ -51,7 +51,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					statement.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -60,7 +59,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					connection.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -102,7 +100,6 @@ public class EntityDAO<T> implements IEntityDAO {
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
 			logger.warn(e);
 		} finally {
 			if (preparedStatement != null) {
@@ -110,7 +107,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					preparedStatement.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -119,7 +115,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					connection.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -142,7 +137,6 @@ public class EntityDAO<T> implements IEntityDAO {
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
 			logger.warn(e);
 		} finally {
 			if (preparedStatement != null) {
@@ -150,7 +144,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					preparedStatement.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -159,7 +152,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					connection.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -339,7 +331,6 @@ public class EntityDAO<T> implements IEntityDAO {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
 			logger.warn(e);
 		} finally {
 			if (preparedStatement != null) {
@@ -347,7 +338,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					preparedStatement.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -356,7 +346,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					connection.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -433,25 +422,25 @@ public class EntityDAO<T> implements IEntityDAO {
 					o = clazz2.getConstructor(Object.class).newInstance(id);
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					throw new CustomException(e1.toString());
 				} catch (InstantiationException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new CustomException(e.toString());
 				} catch (IllegalAccessException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new CustomException(e.toString());
 				} catch (IllegalArgumentException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new CustomException(e.toString());
 				} catch (InvocationTargetException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new CustomException(e.toString());
 				} catch (NoSuchMethodException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new CustomException(e.toString());
 				} catch (SecurityException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new CustomException(e.toString());
 				}
 
 				// get primary key fieldname:
@@ -532,7 +521,6 @@ public class EntityDAO<T> implements IEntityDAO {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
 			logger.warn(e);
 		} finally {
 			if (preparedStatement != null) {
@@ -540,7 +528,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					preparedStatement.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -549,7 +536,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					connection.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -696,7 +682,6 @@ public class EntityDAO<T> implements IEntityDAO {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
 			logger.warn(e);
 		} finally {
 			if (preparedStatement != null) {
@@ -704,7 +689,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					preparedStatement.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
@@ -713,7 +697,6 @@ public class EntityDAO<T> implements IEntityDAO {
 					connection.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					// e.printStackTrace();
 					logger.warn(e);
 				}
 			}
