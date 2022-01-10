@@ -5,19 +5,20 @@ A java based ORM for simplifying connecting to and from an SQL database without 
 
 ## Technologies Used
 
-* PostgreSQL - version 42.2.12  
+* PostgreSQL - version 42.2.23  
 * Java - version 8.0  
-* Apache commons - version 2.1  
-* JUnit
-* Log4j
+* Apache commons - version 2.1
+* Log4j - version 1.2.17
+* SonarCloud
 
 ## Features
 
 List of features ready and TODOs for future development  
-* Easy to use and straightforward user API.  
-* No need for SQL, HQL, or any databse specific language.  
+
+* Easy to use and straightforward user API for creating simple one to one databases 
 * Straightforward and simple Annotation based for ease of use. 
-* etc...
+* Annotations are provided to make tables, and attributes as primary keys, foreign keys, and join coloums
+* 
 
 To-do list: [`for future iterations`]
 * Mapping of join columns inside of entities.    
