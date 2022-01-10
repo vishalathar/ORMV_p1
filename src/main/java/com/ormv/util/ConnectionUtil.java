@@ -121,7 +121,7 @@ public class ConnectionUtil {
 
 	// This will be a method used to print the connection pool status
 	public static void printDbStatus() {
-		System.out.println("Max: " + getConnectionPool().getMaxActive() + "; Active: "
+		logger.info("Max: " + getConnectionPool().getMaxActive() + "; Active: "
 				+ getConnectionPool().getNumActive() + "; Idle: " + getConnectionPool().getNumIdle());
 	}
 

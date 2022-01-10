@@ -86,7 +86,7 @@ public class EntityDAO<T> implements IEntityDAO {
 
 					PrimaryKeyField pkf = model.getPrimaryKeyField();
 					pkf.setAccessible(true);
-					System.out.println("pkf value: " + pkf.getValue(Obj));
+					logger.info("pkf value: " + pkf.getValue(Obj));
 
 					if (pkf.getType().equals(int.class)) {
 						preparedStatement.setInt(1, (int) pkf.getValue(Obj));
@@ -174,7 +174,7 @@ public class EntityDAO<T> implements IEntityDAO {
 
 			// getting table name
 			Class clazz = model.getClazz();
-			System.out.println("model: " + clazz.getName());
+			logger.info("model: " + clazz.getName());
 			Entity entity = (Entity) clazz.getAnnotation(Entity.class);
 
 			// preparing sql statement
@@ -263,7 +263,7 @@ public class EntityDAO<T> implements IEntityDAO {
 				}
 			}
 
-			System.out.println(sb.substring(0, sb.toString().length() - 1) + ");");
+			logger.info(sb.substring(0, sb.toString().length() - 1) + ");");
 			String query = sb.substring(0, sb.toString().length() - 1) + ");";
 			createTableJDBC(query);
 		}
@@ -370,7 +370,7 @@ public class EntityDAO<T> implements IEntityDAO {
 
 		// getting name of table
 		Class<?> clazz = Obj.getClass();
-		System.out.println("Class Name : " + clazz.getSimpleName());
+		logger.info("Class Name : " + clazz.getSimpleName());
 		PrimaryKeyField pkf = null;
 		Entity entity = clazz.getAnnotation(Entity.class);
 
@@ -388,9 +388,9 @@ public class EntityDAO<T> implements IEntityDAO {
 		}
 		StringBuilder sb = new StringBuilder();
 		sb.append("DELETE FROM " + entity.tableName().toLowerCase() + " WHERE " + pkf.getColumnName() + " = ?;");
-		System.out.println(sb);
+		logger.info(sb);
 		pkf.setAccessible(true);
-		System.out.println("pkf value: " + pkf.getValue(Obj));
+		logger.info("pkf value: " + pkf.getValue(Obj));
 		DELETE_FROM_JDBC_BY_ID(sb.toString(), Obj);
 	}
 
@@ -400,13 +400,13 @@ public class EntityDAO<T> implements IEntityDAO {
 
 		// getting name of table
 		// Class<?> clazz = Obj.getClass();
-		System.out.println("Class Name : " + clazz.getSimpleName());
+		logger.info("Class Name : " + clazz.getSimpleName());
 		PrimaryKeyField pkf = null;
 		Entity entity = clazz.getAnnotation(Entity.class);
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("TRUNCATE " + entity.tableName().toLowerCase() + " ;");
-		System.out.println(sb);
+		logger.info(sb);
 
 		DELETE_ALL_JDBC_BY_CLASS(sb.toString());
 
@@ -429,7 +429,7 @@ public class EntityDAO<T> implements IEntityDAO {
 
 				try {
 					Class<?> clazz2 = Class.forName(clazz.getName());
-					System.out.println("clazz 2: " + clazz2.getName());
+					logger.info("clazz 2: " + clazz2.getName());
 					o = clazz2.getConstructor(Object.class).newInstance(id);
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -463,7 +463,7 @@ public class EntityDAO<T> implements IEntityDAO {
 			}
 		}
 		sb.append(";");
-		System.out.println(sb);
+		logger.info(sb);
 		Object getObj = GET_AN_OBJECT_BY_ID(sb.toString(), o);
 		return getObj;
 
@@ -506,7 +506,7 @@ public class EntityDAO<T> implements IEntityDAO {
 
 					for (ColumnField cf : cFields) {
 						cf.setAccessible(true);
-						System.out.println("type: " + cf.getType());
+						logger.info("type: " + cf.getType());
 
 						if (cf.getType().equals(int.class)) {
 							preparedStatement.setInt(i, (int) cf.getValue(Obj));
@@ -525,7 +525,7 @@ public class EntityDAO<T> implements IEntityDAO {
 			if ((rs = preparedStatement.executeQuery()) != null) {
 
 				rs.next();
-				System.out.println("returned pk id: " + rs.getInt(1));
+				logger.info("returned pk id: " + rs.getInt(1));
 				Object id = rs.getInt(1);
 				return id;
 			}
@@ -610,7 +610,7 @@ public class EntityDAO<T> implements IEntityDAO {
 		sb.append(pkf.getColumnName());
 		sb.append(";");
 
-		System.out.println(sb.toString());
+		logger.info(sb.toString());
 		Object id = INSERT_INTO_AN_OBJECT_JDBC(sb.toString(), Obj);
 		return id;
 	}
@@ -633,7 +633,7 @@ public class EntityDAO<T> implements IEntityDAO {
 					Field[] oFields = Obj.getClass().getDeclaredFields();
 
 					for (ColumnField cf : cFields) {
-						System.out.println("type: " + cf.getType());
+						logger.info("type: " + cf.getType());
 
 						if (cf.getType().equals(int.class)) {
 							preparedStatement.setInt(i, (int) cf.getValue(Obj));
@@ -646,10 +646,10 @@ public class EntityDAO<T> implements IEntityDAO {
 //					
 //					List<ForeignKeyField> fkFields = model.getForeignKeyFields();
 //					for (ForeignKeyField fkf : fkFields) {
-//						System.out.println(fkf.getType());
-//						System.out.println(model.getClazz());
-//						System.out.println(model.getClassName());
-//						System.out.println(model.);
+//						logger.info(fkf.getType());
+//						logger.info(model.getClazz());
+//						logger.info(model.getClassName());
+//						logger.info(model.);
 //						
 //						if (fkf.getType().equals(int.class)) {
 //							preparedStatement.setInt(i, (int) fkf.getValue(Obj));
@@ -680,7 +680,7 @@ public class EntityDAO<T> implements IEntityDAO {
 			if ((rs = preparedStatement.executeQuery()) != null) {
 
 				rs.next();
-				System.out.println("returned pk id: " + rs.getInt(1));
+				logger.info("returned pk id: " + rs.getInt(1));
 				Object id = rs.getInt(1);
 
 			}
@@ -757,7 +757,7 @@ public class EntityDAO<T> implements IEntityDAO {
 		sb.append(pkf.getColumnName());
 		sb.append("=?;");
 
-		System.out.println(sb.toString());
+		logger.info(sb.toString());
 		UPDATE_AN_OBJECT_BY_OBJECT_JDBC(sb.toString(), Obj);
 		
 	}

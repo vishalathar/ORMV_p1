@@ -113,27 +113,4 @@ public class Configuration<T> {
 		
 	}
 
-
-		
-//		StringBuilder sb = new StringBuilder();
-//		sb.append("CREATE TABLE ");
-//		sb.append(clazz.getSimpleName().toLowerCase());
-//		sb.append(" (");
-//		for(Field field : clazz.getDeclaredFields()) {
-//			sb.append(field.getName());
-//			sb.append(" ");
-//			if(field.getType().getSimpleName().equals("int")) {
-//				sb.append("int(11)");
-//			}
-//			if(field.getType().getSimpleName().equals("String")) {
-//				sb.append("varchar(255)");
-//			}
-//			sb.append(",");	
-//		}
-//		System.out.println(sb.substring(0,sb.toString().length()-1) + ")");
-		
-		
-	
-		
-
 }

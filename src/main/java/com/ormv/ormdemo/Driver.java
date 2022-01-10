@@ -5,11 +5,10 @@ import java.util.List;
 import com.ormv.dao.EntityDAO;
 import com.ormv.demomodels.DemoOtherClass;
 import com.ormv.demomodels.DemoUser;
+import com.ormv.session.ORMV_Session;
 import com.ormv.util.Configuration;
 public class Driver {
 	
-	private static EntityDAO edao = null;
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -24,24 +23,24 @@ public class Driver {
 		DemoUser du1 = new DemoUser("Vishal", "Athar");
 		DemoUser du2 = new DemoUser("Fozia", "Chughtai");
 		
-		edao = new EntityDAO<>(cfg);
+		ORMV_Session ses = new ORMV_Session(cfg);
 		
 		// functions need to get to work
 		
-		du1.setId((int)edao.save(du1));
-		edao.save(du2);
+		du1.setId((int)ses.save(du1));
+		ses.save(du2);
 		
-		DemoUser du1Copy = (DemoUser)edao.get(DemoUser.class, du1.getId());
+		DemoUser du1Copy = (DemoUser)ses.get(DemoUser.class, du1.getId());
 		System.out.println(du1Copy);
 		
 		du1.setFirstName("Arfa");
 		du1.setLastname("Athar");
-		edao.update(du1);
+		ses.update(du1);
 		
-		//System.out.println(du1);
+		System.out.println(du1);
 		// functions working
-		//edao.delete(du1);
-		//edao.truncate(DemoUser.class);
+		ses.delete(du1);
+		ses.truncate(DemoUser.class);
 		
 		
 	}

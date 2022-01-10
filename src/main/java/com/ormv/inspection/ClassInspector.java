@@ -10,11 +10,10 @@ import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 
-import com.ormv.util.Session;
 
 public class ClassInspector {
 	
-	private static Logger log = Logger.getLogger(Session.class);
+	private static Logger log = Logger.getLogger(ClassInspector.class);
 
 	public static void inspectClass(Class<?> clazz) {
 		listPublicConstructors(clazz);

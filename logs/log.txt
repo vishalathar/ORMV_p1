@@ -46,3 +46,92 @@
 2022-01-10 07:39:46 WARN  ormv.util.ConnectionUtil:690 - org.postgresql.util.PSQLException: No value specified for parameter 4.
 2022-01-10 07:40:41 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No value specified for parameter 4.
 2022-01-10 07:42:42 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No results were returned by the query.
+2022-01-10 07:52:18 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No results were returned by the query.
+2022-01-10 07:54:38 INFO  ormv.util.ConnectionUtil:177 - model: com.ormv.demomodels.DemoOtherClass
+2022-01-10 07:54:38 INFO  ormv.util.ConnectionUtil:266 - DROP TABLE IF EXISTS test_table CASCADE;CREATE TABLE test_table (test_id SERIAL PRIMARY KEY,test_field_1 VARCHAR(255) );
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:177 - model: com.ormv.demomodels.DemoUser
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:266 - DROP TABLE IF EXISTS users CASCADE;CREATE TABLE users (user_id SERIAL PRIMARY KEY,first_name VARCHAR(255) ,last_name VARCHAR(255) ,test_relation INTEGER REFERENCES DemoOtherClass(test_id) ON DELETE CASCADE ON UPDATE CASCADE);
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:613 - INSERT INTO users (first_name,last_name) VALUES (?,?) RETURNING user_id;
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:528 - returned pk id: 1
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:613 - INSERT INTO users (first_name,last_name) VALUES (?,?) RETURNING user_id;
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:528 - returned pk id: 2
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:432 - clazz 2: com.ormv.demomodels.DemoUser
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:466 - Select * FROM users WHERE user_id = ? ;
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:760 - UPDATE users SET first_name = ?,last_name = ? WHERE user_id=?;
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:636 - type: class java.lang.String
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:636 - type: class java.lang.String
+2022-01-10 07:54:39 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No results were returned by the query.
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:373 - Class Name : DemoUser
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:391 - DELETE FROM users WHERE user_id = ?;
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:393 - pkf value: 1
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:89 - pkf value: 1
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:403 - Class Name : DemoUser
+2022-01-10 07:54:39 INFO  ormv.util.ConnectionUtil:409 - TRUNCATE users ;
+2022-01-10 07:55:51 INFO  ormv.util.ConnectionUtil:177 - model: com.ormv.demomodels.DemoOtherClass
+2022-01-10 07:55:51 INFO  ormv.util.ConnectionUtil:266 - DROP TABLE IF EXISTS test_table CASCADE;CREATE TABLE test_table (test_id SERIAL PRIMARY KEY,test_field_1 VARCHAR(255) );
+2022-01-10 07:55:51 INFO  ormv.util.ConnectionUtil:177 - model: com.ormv.demomodels.DemoUser
+2022-01-10 07:55:51 INFO  ormv.util.ConnectionUtil:266 - DROP TABLE IF EXISTS users CASCADE;CREATE TABLE users (user_id SERIAL PRIMARY KEY,first_name VARCHAR(255) ,last_name VARCHAR(255) ,test_relation INTEGER REFERENCES DemoOtherClass(test_id) ON DELETE CASCADE ON UPDATE CASCADE);
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:613 - INSERT INTO users (first_name,last_name) VALUES (?,?) RETURNING user_id;
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:528 - returned pk id: 1
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:613 - INSERT INTO users (first_name,last_name) VALUES (?,?) RETURNING user_id;
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:528 - returned pk id: 2
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:432 - clazz 2: com.ormv.demomodels.DemoUser
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:466 - Select * FROM users WHERE user_id = ? ;
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:760 - UPDATE users SET first_name = ?,last_name = ? WHERE user_id=?;
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:636 - type: class java.lang.String
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:636 - type: class java.lang.String
+2022-01-10 07:55:52 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No results were returned by the query.
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:373 - Class Name : DemoUser
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:391 - DELETE FROM users WHERE user_id = ?;
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:393 - pkf value: 1
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:89 - pkf value: 1
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:403 - Class Name : DemoUser
+2022-01-10 07:55:52 INFO  ormv.util.ConnectionUtil:409 - TRUNCATE users ;
+2022-01-10 07:56:48 INFO  ormv.util.ConnectionUtil:177 - model: com.ormv.demomodels.DemoOtherClass
+2022-01-10 07:56:48 INFO  ormv.util.ConnectionUtil:266 - DROP TABLE IF EXISTS test_table CASCADE;CREATE TABLE test_table (test_id SERIAL PRIMARY KEY,test_field_1 VARCHAR(255) );
+2022-01-10 07:56:48 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:177 - model: com.ormv.demomodels.DemoUser
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:266 - DROP TABLE IF EXISTS users CASCADE;CREATE TABLE users (user_id SERIAL PRIMARY KEY,first_name VARCHAR(255) ,last_name VARCHAR(255) ,test_relation INTEGER REFERENCES DemoOtherClass(test_id) ON DELETE CASCADE ON UPDATE CASCADE);
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:613 - INSERT INTO users (first_name,last_name) VALUES (?,?) RETURNING user_id;
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:528 - returned pk id: 1
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:613 - INSERT INTO users (first_name,last_name) VALUES (?,?) RETURNING user_id;
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:509 - type: class java.lang.String
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:528 - returned pk id: 2
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:432 - clazz 2: com.ormv.demomodels.DemoUser
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:466 - Select * FROM users WHERE user_id = ? ;
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:760 - UPDATE users SET first_name = ?,last_name = ? WHERE user_id=?;
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:636 - type: class java.lang.String
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:636 - type: class java.lang.String
+2022-01-10 07:56:49 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No results were returned by the query.
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:373 - Class Name : DemoUser
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:391 - DELETE FROM users WHERE user_id = ?;
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:393 - pkf value: 1
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:89 - pkf value: 1
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:403 - Class Name : DemoUser
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:409 - TRUNCATE users ;
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 0; Idle: 0
+2022-01-10 07:56:49 INFO  ormv.util.ConnectionUtil:124 - Max: 5; Active: 1; Idle: 0
