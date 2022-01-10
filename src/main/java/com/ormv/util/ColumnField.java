@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import com.ormv.annotations.Column;
 import com.ormv.customexceptions.ColumnFieldNotAnnotatedWithColumn;
+import com.ormv.customexceptions.CustomException;
 
 public class ColumnField {
 
@@ -54,9 +55,9 @@ public class ColumnField {
 			return field.get(obj);
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new CustomException(e.toString());
 		}
-		return null;
 	}
 	
 	public void setValue(Object obj, Object fieldVal) {
@@ -65,7 +66,7 @@ public class ColumnField {
 			field.set(obj, fieldVal);
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CustomException(e.toString());
 		}
 	}
 	
