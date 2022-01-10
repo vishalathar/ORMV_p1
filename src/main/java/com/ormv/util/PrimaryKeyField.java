@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import com.ormv.annotations.Column;
 import com.ormv.annotations.Id;
 import com.ormv.customexceptions.ColumnFieldNotAnnotatedWithId;
+import com.ormv.customexceptions.CustomException;
 
 public class PrimaryKeyField {
 
@@ -55,9 +56,8 @@ private Field field; // from java.lang.reflect
 			return field.get(obj);
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CustomException(e.toString());
 		}
-		return null;
 	}
 	
 	public void setValue(Object obj, Object fieldVal) {
@@ -66,7 +66,7 @@ private Field field; // from java.lang.reflect
 			field.set(obj, fieldVal);
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CustomException(e.toString());
 		}
 	}
 	
