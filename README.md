@@ -1,7 +1,7 @@
 # ormv_p1
 
 ## Project Description
-A java based ORM for simplifying connecting to and from an PostgreSQL database without the need for SQL or connection management. 
+A java based ORM for simplifying connecting to and from a PostgreSQL database without the need for SQL or connection management. 
 
 ## Technologies Used
 
