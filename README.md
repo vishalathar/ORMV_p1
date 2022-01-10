@@ -18,7 +18,8 @@ List of features ready and TODOs for future development
 * Easy to use and straightforward user API for creating simple one to one databases 
 * Straightforward and simple Annotation based for ease of use. 
 * Annotations are provided to make tables, and attributes as primary keys, foreign keys, and join coloums
-* 
+* Saves objects in dynamically created databases
+* Perform CRUD operations on objects in dynamically created databases
 
 To-do list: [`for future iterations`]
 * Mapping of join columns inside of entities.    
@@ -60,24 +61,26 @@ Finally, inside your project structure you need a ormv.cfg.proprties file.
       - Indicates that this class is associated with table 'table_name'  
    - #### @Column(columnName = "column_name")  
       - Indicates that the Annotated field is a column in the table with the name 'column_name'
-      - CHECK
-      - UNIQUE
-      - NULLABLE
+      - CHECK, default: "none"
+      - UNIQUE, default: false
+      - NULLABLE, default: true
    - #### @PrimaryKey(columnName = "column_name", strategy="GenerationType.IDENTITY") 
       - Indicates that the annotated field is the primary key for the table.
       - Strategy indicates that it is a SERIAL TYPE primary key (currently only SERIAL TYPE is supported).
-      -  CHECK
-      - UNIQUE
-      - NULLABLE
+      - CHECK, default: "none"
+      - UNIQUE, default: true
+      - NULLABLE, default: false
    - #### @JoinColumn(columnName = "column_name") 
       - Indicates that the annotated field is the foreign key for the table
-      - CHECK
-      - UNIQUE
-      - NULLABLE
+      - CHECK, default: "none"
+      - UNIQUE, default: false
+      - NULLABLE, default: true
 
   ### User API  
   - To work with the API you need to make an instance of Configuration() as
     ```Configuration cfg = new Configuration(); ```
+    For that you need to import following mentioned library:
+    ``` import com.ormv.util.Configuration; ```
   - Then use the method 'public Configuration<T> addAnnotatedClass(Class<?> annotatedClass)' to add annotated classes. Make sure you add the independent classes first,
   and then go for dependent classes. e.g
     ```cfg.addAnnotatedClass(DemoClass.class);```
@@ -85,6 +88,8 @@ Finally, inside your project structure you need a ormv.cfg.proprties file.
   This method Create table queries, get Connection from Connection Pool and Create Database of annotated Classes.
   - To use the further methods to perform CRUD operations on DB Objects. Create an instance of ORMV_Session, passing the Configuration object as
     ```ORMV_Session ses = new ORMV_Session(cfg);```
+    For that you need to import following mentioned library:
+    ```import com.ormv.session.ORMV_Session;```
     It acts as an abstraction over EntityDao Layer. Also, will include features of transaction and session handling in future.
   - For Crud opertaions make use of following methods:
   
