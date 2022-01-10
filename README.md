@@ -88,15 +88,15 @@ Finally, inside your project structure you need a ormv.cfg.proprties file.
     It acts as an abstraction over EntityDao Layer. Also, will include features of transaction and session handling in future.
   - For Crud opertaions make use of following methods:
   
-  - ### 'public Object save(Object Obj)'
+  - ### '```public Object save(Object Obj)```'
       - Add the Object in the respective table in DB, returning the primary key generated.
-  - ### 'public void update(Object Obj);'
+  - ### '```public void update(Object Obj);```'
       - Updates the Object using id in the respective table in DB.
-  - ### 'public void delete(Object Obj)'
+  - ### '```public void delete(Object Obj)```'
       - Deletes the Object in the respective table using id in DB.
-  - ### 'public void truncate(Class<?> clazz)'
+  - ### '```public void truncate(Class<?> clazz)```'
       - Clears the whole data in the respective table in DB.
-  - ### 'public Object get(Class<?> clazz, Object id)'
+  - ### '```public Object get(Class<?> clazz, Object id)```'
       - Returns the Object in the respective table in DB represented by id.
 
 
