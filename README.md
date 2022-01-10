@@ -28,6 +28,7 @@ To-do list: [`for future iterations`]
 * Implement @manytomany, @onetomany and @manytoone anotations 
 * Implement getAll(), saveAll(), saveOrUpdate() functions
 * Most Importantly, Implement Transactions and Light-Weight Sessions
+* Will Include implementation of other datatypes
 
 ## Getting Started  
 Currently project must be included as local dependency. to do so:
