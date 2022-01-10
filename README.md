@@ -84,7 +84,7 @@ Finally, inside your project structure you need a ormv.cfg.proprties file.
   - Then use the method 'public Configuration<T> addAnnotatedClass(Class<?> annotatedClass)' to add annotated classes. Make sure you add the independent classes first,
   and then go for dependent classes. e.g
     ```cfg.addAnnotatedClass(DemoClass.class);```
-  - Then call the method of Configuration class public void 'showReflectionMagic()', that as the name explains will show #REFLECTION MAGIC.
+  - Then call the method of Configuration class public void 'showReflectionMagic()', that as the name explains will show *REFLECTION MAGIC*.
   This method Create table queries, get Connection from Connection Pool and Create Database of annotated Classes.
   - To use the further methods to perform CRUD operations on DB Objects. Create an instance of ORMV_Session, passing the Configuration object as
     ```ORMV_Session ses = new ORMV_Session(cfg);```
