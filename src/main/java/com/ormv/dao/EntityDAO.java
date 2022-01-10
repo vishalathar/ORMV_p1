@@ -582,6 +582,15 @@ public class EntityDAO<T> implements IEntityDAO {
 
 					sb.append(",");
 				}
+//				
+//				List<ForeignKeyField> fkFields = model.getForeignKeyFields();
+//
+//				for (ForeignKeyField fkf : fkFields) {
+//
+//					sb.append(fkf.getColumnName());
+//
+//					sb.append(",");
+//				}
 
 			}
 		}

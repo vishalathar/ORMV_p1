@@ -12,5 +12,5 @@ public @interface Id {
 	String check() default "none";
 	boolean unique() default true;
 	boolean nullable() default false;
-	String strategy() default "";
+	String strategy();
 }
