@@ -298,38 +298,11 @@ public class EntityDAO<T> implements IEntityDAO {
 
 				}
 			}
-//			int i = 1;
-//			// getting values of fields:
-//			for (MetaModel<?> model : metaModels) {
-//	
-//				if (model.getClazz().equals(Obj.getClass())) {
-//					List<ColumnField> cFields = model.getColumnFields();
-//					Field[] oFields = Obj.getClass().getDeclaredFields();
-//					
-//					for (ColumnField cf : cFields) {
-//						cf.setAccessible(true);
-//						System.out.println("type: " + cf.getType());
-//						
-//						if(cf.getType().equals(int.class)) {
-//							preparedStatement.setInt(i, (int) cf.getValue(Obj));
-//							i++;
-//						}
-//						else if(cf.getType().equals(String.class)) {
-//							preparedStatement.setString(i, (String) cf.getValue(Obj));
-//							i++;
-//						}
-//					}
-//	
-//				}
-//			}
 			ResultSet rs;
 
 			if ((rs = preparedStatement.executeQuery()) != null) {
 
 				while (rs.next()) {
-					System.out.println("id value: ");
-					System.out.println(rs.getString("user_id"));
-
 					for (MetaModel<?> model : metaModels) {
 						if (model.getClazz().equals(Obj.getClass())) {
 							if (pkf.getType().equals(int.class)) {
@@ -342,19 +315,15 @@ public class EntityDAO<T> implements IEntityDAO {
 
 							List<ColumnField> cFields = model.getColumnFields();
 							for (ColumnField cf : cFields) {
-								System.out.println("type: " + cf.getType());
-
 								if (cf.getType().equals(int.class)) {
 									cf.setValue(Obj, rs.getInt(cf.getColumnName()));
 								} else if (cf.getType().equals(String.class)) {
 									cf.setValue(Obj, rs.getString(cf.getColumnName()));
 								}
 							}
-							
+
 							List<ForeignKeyField> fFields = model.getForeignKeyFields();
 							for (ForeignKeyField fkf : fFields) {
-								System.out.println("type: " + fkf.getType());
-
 								if (fkf.getType().equals(int.class)) {
 									fkf.setValue(Obj, rs.getInt(fkf.getColumnName()));
 								} else if (fkf.getType().equals(String.class)) {
@@ -424,8 +393,6 @@ public class EntityDAO<T> implements IEntityDAO {
 		System.out.println("pkf value: " + pkf.getValue(Obj));
 		DELETE_FROM_JDBC_BY_ID(sb.toString(), Obj);
 	}
-
-	
 
 	@Override
 	public void truncate(Class<?> clazz) {
@@ -591,12 +558,7 @@ public class EntityDAO<T> implements IEntityDAO {
 
 	}
 
-	/*
-	 * 
-	 * INSERT INTO vishal.users (user_id,first_name, last_name) VALUES(2, 'Vishal',
-	 * 'Athar');
-	 */
-
+	
 	@Override
 	public Object save(Object Obj) {
 
@@ -655,13 +617,149 @@ public class EntityDAO<T> implements IEntityDAO {
 
 	@Override
 	public void UPDATE_AN_OBJECT_BY_OBJECT_JDBC(String query, Object Obj) {
-		// TODO Auto-generated method stub
-		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = Configuration.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+
+			int i = 1;
+			// getting values of fields:
+			for (MetaModel<?> model : metaModels) {
+
+				if (model.getClazz().equals(Obj.getClass())) {
+					List<ColumnField> cFields = model.getColumnFields();
+					Field[] oFields = Obj.getClass().getDeclaredFields();
+
+					for (ColumnField cf : cFields) {
+						System.out.println("type: " + cf.getType());
+
+						if (cf.getType().equals(int.class)) {
+							preparedStatement.setInt(i, (int) cf.getValue(Obj));
+							i++;
+						} else if (cf.getType().equals(String.class)) {
+							preparedStatement.setString(i, (String) cf.getValue(Obj));
+							i++;
+						}
+					}
+//					
+//					List<ForeignKeyField> fkFields = model.getForeignKeyFields();
+//					for (ForeignKeyField fkf : fkFields) {
+//						System.out.println(fkf.getType());
+//						System.out.println(model.getClazz());
+//						System.out.println(model.getClassName());
+//						System.out.println(model.);
+//						
+//						if (fkf.getType().equals(int.class)) {
+//							preparedStatement.setInt(i, (int) fkf.getValue(Obj));
+//							i++;
+//						} else if (fkf.getType().equals(String.class)) {
+//							preparedStatement.setString(i, (String) fkf.getValue(Obj));
+//							i++;
+//						} else if (fkf.getType().equals(model.getClazz())) {
+//							preparedStatement.setObject(i, fkf.getValue(Obj));
+//							i++;
+//						}
+//					}
+					
+					PrimaryKeyField pkf = model.getPrimaryKeyField();
+					if (pkf.getType().equals(int.class)) {
+						preparedStatement.setInt(i, (int) pkf.getValue(Obj));
+						i++;
+					} else if (pkf.getType().equals(String.class)) {
+						preparedStatement.setString(i, (String) pkf.getValue(Obj));
+						i++;
+					}
+
+				}
+			}
+
+			ResultSet rs;
+
+			if ((rs = preparedStatement.executeQuery()) != null) {
+
+				rs.next();
+				System.out.println("returned pk id: " + rs.getInt(1));
+				Object id = rs.getInt(1);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			logger.warn(e);
+		} finally {
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					// e.printStackTrace();
+					logger.warn(e);
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					// e.printStackTrace();
+					logger.warn(e);
+				}
+			}
+		}
+
 	}
-	
+
 	@Override
 	public void update(Object Obj) {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE ");
 
+		// get table name:
+		Entity entity = Obj.getClass().getAnnotation(Entity.class);
+		sb.append(entity.tableName().toLowerCase());
+		sb.append(" SET ");
+
+		// getting names of fields
+		PrimaryKeyField pkf = null;
+		for (MetaModel model : metaModels) {
+
+			if (model.getClazz().equals(Obj.getClass())) {
+				List<ColumnField> cFields = model.getColumnFields();
+				pkf = model.getPrimaryKeyField();
+
+				for (ColumnField cf : cFields) {
+
+					sb.append(cf.getColumnName());
+
+					sb.append(" = ?,");
+				}
+				
+//				List<ForeignKeyField> fkFields = model.getForeignKeyFields();
+//				if(fkFields!=null) {
+//					for (ForeignKeyField fkf : fkFields) {
+//
+//						sb.append(fkf.getColumnName());
+//
+//						sb.append(" = ?,");
+//					}
+//				}
+
+			}
+		}
+
+		sb.deleteCharAt(sb.lastIndexOf(","));
+		sb.append(" WHERE ");
+
+		sb.append(pkf.getColumnName());
+		sb.append("=?;");
+
+		System.out.println(sb.toString());
+		UPDATE_AN_OBJECT_BY_OBJECT_JDBC(sb.toString(), Obj);
+		
 	}
 
 }

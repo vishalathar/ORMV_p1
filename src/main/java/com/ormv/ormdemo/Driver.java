@@ -33,6 +33,11 @@ public class Driver {
 		
 		DemoUser du1Copy = (DemoUser)edao.get(DemoUser.class, du1.getId());
 		System.out.println(du1Copy);
+		
+		du1.setFirstName("Arfa");
+		du1.setLastname("Athar");
+		edao.update(du1);
+		
 		//System.out.println(du1);
 		// functions working
 		//edao.delete(du1);

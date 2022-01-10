@@ -36,3 +36,13 @@
 2022-01-10 06:00:42 WARN  ormv.util.ConnectionUtil:119 - org.postgresql.util.PSQLException: ERROR: operator does not exist: integer = character varying
   Hint: No operator matches the given name and argument types. You might need to add explicit type casts.
   Position: 33
+2022-01-10 07:23:09 WARN  ormv.util.ConnectionUtil:671 - org.postgresql.util.PSQLException: No value specified for parameter 3.
+2022-01-10 07:28:28 WARN  ormv.util.ConnectionUtil:675 - org.postgresql.util.PSQLException: No value specified for parameter 3.
+2022-01-10 07:30:59 WARN  ormv.util.ConnectionUtil:684 - org.postgresql.util.PSQLException: No value specified for parameter 4.
+2022-01-10 07:31:55 WARN  ormv.util.ConnectionUtil:684 - org.postgresql.util.PSQLException: No value specified for parameter 4.
+2022-01-10 07:32:33 WARN  ormv.util.ConnectionUtil:684 - org.postgresql.util.PSQLException: No value specified for parameter 4.
+2022-01-10 07:34:53 WARN  ormv.util.ConnectionUtil:687 - org.postgresql.util.PSQLException: No value specified for parameter 4.
+2022-01-10 07:37:25 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No value specified for parameter 4.
+2022-01-10 07:39:46 WARN  ormv.util.ConnectionUtil:690 - org.postgresql.util.PSQLException: No value specified for parameter 4.
+2022-01-10 07:40:41 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No value specified for parameter 4.
+2022-01-10 07:42:42 WARN  ormv.util.ConnectionUtil:691 - org.postgresql.util.PSQLException: No results were returned by the query.
