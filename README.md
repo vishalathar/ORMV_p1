@@ -1,4 +1,4 @@
-# ormv_p1
+# ORMV_p1
 
 ## Project Description
 A java based ORM for simplifying connecting to and from a PostgreSQL database without the need for PostgreSQL or connection management. 
@@ -22,18 +22,14 @@ List of features ready and TODOs for future development
 * Perform CRUD operations on objects in dynamically created databases
 
 To-do list: [`for future iterations`]
-* Mapping of join columns inside of entities.    
-* Implement of aggregate functions.  
-* Implement insertion of foreign key attributes
+* Mapping of join columns inside of entities.
 * Implement @manytomany, @onetomany and @manytoone anotations 
 * Implement getAll(), saveAll(), saveOrUpdate() functions
-* Most Importantly, Implement Transactions and Light-Weight Sessions
-* Will Include implementation of other datatypes
 
 ## Getting Started  
 Currently project must be included as local dependency. to do so:
 ```shell
-  git clone https://github.com/vishalathar/ormv_p1
+  git clone https://github.com/vishalathar/ORMV_p1
   cd ormv_p1
   mvn install
 ```
